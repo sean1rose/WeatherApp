@@ -16,6 +16,8 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 // once the request finishes -> it dispatches a new action of the same type
 // BUT with a payload of the resolved request
 
+// for more info on redux-promise -> see actions/index.js...
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
