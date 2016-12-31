@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from '../components/chart';
+import GoogleMap from '../components/google_map';
 
 class WeatherList extends Component {
   // for rendering a single city/row
@@ -16,11 +17,17 @@ class WeatherList extends Component {
     const temps = preTemps.map(item => (9/5) * (item - 273) + 32);
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
+    // const lon = cityData.city.coord.lon;
+    // const lat = cityData.city.coord.lat;
+    // ^ destructuring replaces the above by wrapping curly braces around the 2 properties that we want to pull off of the parent object
+      // parent object == cityData.city.coor == (common part)
+      // { lon, lat } == what we're taking off of teh common object part
+    const { lon, lat } = cityData.city.coord;
 
 
     return (
       <tr key={name}>
-        <td>{name}</td>
+        <td><GoogleMap lon={lon} lat={lat} /></td>
         <td><Chart data={temps} color="red" units="F" /></td>
         <td className="secondColumn"><Chart data={pressures} color="blue" units="hPa" /></td>
         <td className="thirdColumn"><Chart data={humidities} color="green" units="%" /></td>

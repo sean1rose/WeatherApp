@@ -9,7 +9,7 @@ export default (props) => {
     <GoogleMapLoader 
       containerElement={ <div style={{height: '100%'}} /> }
       googleMapElement={
-        <GoogleMap defaultZoom={12} defaultCenter={{lat: props.lat, lng: props.lon}} />
+        <GoogleMap defaultZoom={9} defaultCenter={{lat: props.lat, lng: props.lon}} />
       }
     />
   )
